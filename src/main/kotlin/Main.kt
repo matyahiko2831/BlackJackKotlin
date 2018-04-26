@@ -5,8 +5,8 @@ import model.*
 fun main(args: Array<String>) {
     println("☆★☆☆★☆ブラックジャックへようこそ！☆★☆☆★☆")
     println("ゲームを開始します")
-//    Card card = new Card()
-    println()
+    val card = Card(Suit.HART, 8)
+    println(card)
 }
 
 val hello: (String) -> String = {
