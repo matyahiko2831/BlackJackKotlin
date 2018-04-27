@@ -5,8 +5,12 @@ import model.*
 fun main(args: Array<String>) {
     println("☆★☆☆★☆ブラックジャックへようこそ！☆★☆☆★☆")
     println("ゲームを開始します")
-    val card = Card(Suit.HART, 8)
-    println(card)
+
+    val cards = Deck().cards
+
+    for (card in cards) {
+        println(card)
+    }
 }
 
 val hello: (String) -> String = {
