@@ -1,27 +1,20 @@
 package hello
 
 import model.*
+import exception.*
 
 fun main(args: Array<String>) {
     println("☆★☆☆★☆ブラックジャックへようこそ！☆★☆☆★☆")
     println("ゲームを開始します")
 
-    val cards = Deck().cards
+    var deck = Deck()
 
-    for (card in cards) {
-        println(card)
+    while (true) {
+        try {
+            println(deck.draw())
+        } catch (e: DeckOutException) {
+            println(e.message)
+            System.exit(0);
+        }
     }
-}
-
-val hello: (String) -> String = {
-    val words = mutableListOf<String>()
-
-    words.add("Hello")
-    words.add(when (it.length) {
-        0 -> ""
-        1 -> it.toUpperCase()
-        else -> it[0].toUpperCase() + it.substring(1)
-    }).toString()
-
-    words.joinToString(separator = ", ").plus("!!")
 }

@@ -1,6 +1,15 @@
 package model
 
+import java.util.Random
+import exception.*
+
+/**
+ * デッキクラス
+ * */
 class Deck {
+
+    /** デッキ残数 */
+    private var remaining: Int = 52
 
     public val cards = arrayOf<Card>(
             Card(Suit.SPADE, 1),
@@ -55,5 +64,29 @@ class Deck {
             Card(Suit.CLUB, 11),
             Card(Suit.CLUB, 12),
             Card(Suit.CLUB, 13)
-            )
+    )
+
+    /**
+     * カードドロー
+     * デッキが0枚になったらException
+     * @return Card
+     * @throws DeckOutException
+     * */
+    public fun draw(): Card {
+
+        while (true) {
+            val card = cards[Random().nextInt(cards.size)]
+
+            if(!card.used) {
+                card.used = true;
+                remaining--
+                return card
+            }
+
+            if (remaining == 0) {
+                throw DeckOutException("デッキ切れ")
+            }
+        }
+    }
+
 }
