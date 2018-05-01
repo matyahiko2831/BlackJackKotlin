@@ -72,7 +72,7 @@ class Deck {
      * @return Card
      * @throws DeckOutException
      * */
-    public fun draw(): Card {
+    public fun draw(role: Role, hide: Boolean = false): Card {
 
         while (true) {
             val card = cards[Random().nextInt(cards.size)]
@@ -80,6 +80,12 @@ class Deck {
             if(!card.used) {
                 card.used = true;
                 remaining--
+
+                if(hide) {
+                    println("%sの引いたカードは分かりません。".format(role))
+                } else {
+                    println("%sの引いたカードは%sです。".format(role, card))
+                }
                 return card
             }
 
