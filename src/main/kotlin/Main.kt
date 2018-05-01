@@ -11,10 +11,13 @@ fun main(args: Array<String>) {
 
     while (true) {
         try {
-            println(deck.draw())
+            println("あなたの引いたカードは%sです。".format(deck.draw()))
+            println("ディーラーの引いたカードは%sです。".format(deck.draw()))
         } catch (e: DeckOutException) {
             println(e.message)
             System.exit(0);
         }
     }
+
+    println("ブラックジャック終了！また遊んでね★")
 }
