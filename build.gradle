@@ -41,3 +41,15 @@ repositories {
     mavenCentral() // for kotlin plugins
     jcenter()
 }
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'hello.MainKt'
+    }
+
+    from {
+        configurations.compile.collect {
+            it.isDirectory() ? it : zipTree(it)
+        }
+    }
+}
