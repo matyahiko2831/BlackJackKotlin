@@ -24,9 +24,11 @@ fun main(args: Array<String>) {
 
     println("あなたの現在の得点は%sです。".format(player.getScore()))
 
-    val read = readLine()
+    println(player.isBurst())
 
-    println(read)
+//    val read = readLine()
+
+//    println(read)
 
 //    while (true) {
 //        try {
