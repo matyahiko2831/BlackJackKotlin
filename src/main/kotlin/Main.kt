@@ -15,14 +15,14 @@ fun main(args: Array<String>) {
     var player = User()
     var dealer = User()
 
-    player.score += deck.draw(Role.PLAYER).number
-    player.score += deck.draw(Role.PLAYER).number
+    player.hand.add(deck.draw(Role.PLAYER))
+    player.hand.add(deck.draw(Role.PLAYER))
 
-    dealer.score += deck.draw(Role.DEALER).number
+    dealer.hand.add(deck.draw(Role.DEALER))
     // 2枚目は何を引いたか表示させない
-    dealer.score += deck.draw(Role.DEALER,true).number
+    dealer.hand.add(deck.draw(Role.DEALER,true))
 
-    println("あなたの現在の得点は%sです。".format(player.score))
+    println("あなたの現在の得点は%sです。".format(player.getScore()))
 
 
 //    while (true) {
