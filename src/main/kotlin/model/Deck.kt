@@ -82,14 +82,15 @@ class Deck {
                 remaining--
 
                 if(hide) {
-                    println("%sの引いたカードは分かりません。".format(role))
+                    println("${role}の引いたカードは分かりません。")
                 } else {
-                    println("%sの引いたカードは%sです。".format(role, card))
+                    println("${role}の引いたカードは${card}です。")
                 }
                 return card
             }
 
             if (remaining == 0) {
+                // いらないけど例外の勉強のために
                 throw DeckOutException("デッキ切れ")
             }
         }

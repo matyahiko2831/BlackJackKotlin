@@ -24,7 +24,7 @@ plugins {
 }
 
 // Define the main class for the application
- mainClassName = 'hello.MainKt'
+ mainClassName = 'blackjack.MainKt'
 
 dependencies {
     // kotlin plugins
@@ -44,7 +44,7 @@ repositories {
 
 jar {
     manifest {
-        attributes 'Main-Class': 'hello.MainKt'
+        attributes 'Main-Class': 'blackjack.MainKt'
     }
 
     from {

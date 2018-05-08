@@ -1,4 +1,4 @@
-package hello
+package blackjack
 
 import org.junit.Test
 import kotlin.test.assertEquals

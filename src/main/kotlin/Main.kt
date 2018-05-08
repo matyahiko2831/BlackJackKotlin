@@ -1,4 +1,4 @@
-package hello
+package blackjack
 
 import model.*
 import exception.*
@@ -22,23 +22,54 @@ fun main(args: Array<String>) {
     // 2枚目は何を引いたか表示させない
     dealer.hand.add(deck.draw(Role.DEALER,true))
 
-    println("あなたの現在の得点は%sです。".format(player.getScore()))
+    println("あなたの現在の得点は${player.getScore()}です。")
 
-    println(player.isBurst())
+    var input: String?
 
-//    val read = readLine()
+    // ユーザーのターン
+    while (true) {
+        println("カードを引きますか？引く場合はYを、引かない場合はNを入力して下さい")
+        input = readLine()
 
-//    println(read)
+        if("Y" == input || "y" == input) {
+            player.hand.add(deck.draw(Role.PLAYER))
 
-//    while (true) {
-//        try {
-//            println("あなたの引いたカードは%sです。".format(deck.draw()))
-//            println("ディーラーの引いたカードは%sです。".format(deck.draw()))
-//        } catch (e: DeckOutException) {
-//            println(e.message)
-//            System.exit(0);
-//        }
-//    }
+            println("あなたの現在の得点は${player.getScore()}です。")
+
+            if(player.isBurst()) {
+                println("バーストしました。")
+                println("あなたの負けです。")
+                println("ブラックジャック終了！また遊んでね★")
+                System.exit(0)
+            }
+
+        } else if("N" == input || "n" == input) {
+            break
+        } else {
+            println("YかNを入力して下さい。")
+        }
+    }
+
+    // ディーラーのターン
+    println("ディーラーの2枚目のカードは${dealer.hand[1]}でした。")
+    println("ディーラーの現在の得点は${dealer.getScore()}です。")
+
+    // 得点が17点以上になるまで繰り返す
+    while(dealer.getScore() < 17) {
+        dealer.hand.add(deck.draw(Role.DEALER))
+    }
+
+    println("あなたの得点は${player.getScore()}です。")
+    println("ディーラーの得点は${dealer.getScore()}です。")
+
+    if(dealer.isBurst()
+            || player.getScore() > dealer.getScore()) {
+        println("あなたの勝ちです。")
+    } else if (player.getScore() == dealer.getScore()){
+        println("引き分けです。")
+    } else {
+        println("あなたの負けです。")
+    }
 
     println("ブラックジャック終了！また遊んでね★")
 }
