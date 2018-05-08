@@ -15,7 +15,7 @@ class User {
         var score = 0
 
         for (card in hand) {
-            score += card.number
+            score += card.rank
         }
 
         return  score

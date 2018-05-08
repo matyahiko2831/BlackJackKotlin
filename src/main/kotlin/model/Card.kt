@@ -4,13 +4,14 @@ package model
  *
  * カードクラス
  * @param suit マーク
- * @param number 数字
+ * @param index 表示
+ * @param rank ランク
  * @param used 使用済み
  *
  * */
-class Card(val suit: Suit, val number: Int, var used: Boolean = false){
+class Card(val suit: Suit, val index: String, val rank: Int, var used: Boolean = false){
 
     public override fun toString(): String {
-        return "%sの%s".format(suit, number)
+        return "${suit}の${index}"
     }
 }
